@@ -5,10 +5,10 @@
 USERID=$(id -u)
 
 # for user interaction given colour
-R="/e[31m"
-G="/e[32m"
-Y="/e[33m"
-N="/e[0m"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
 #creating logs folder
 LOG_FOLDER="/var/log/mysql.logs"
@@ -48,6 +48,6 @@ if [ $? -ne 0 ]; then
     mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
     validate $? "setting the password"
 else 
-    echo -e "already the set the password: $Y Skkipp $N"
+    echo -e "already set the password: $Y Skkipp $N"
 fi
 
