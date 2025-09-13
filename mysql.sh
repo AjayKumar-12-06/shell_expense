@@ -43,7 +43,7 @@ validate $? "enable mysql"
 systemctl start mysqld &>>$LOG_FILE_NAME
 validate $? "start the mysql"
 
-mysql -h 172.31.28.238 -u root -pExpenseApp@1 -e show databases; &>>$LOG_FILE_NAME
+mysql -h 172.31.28.238 -u root -pExpenseApp@1 -e "show databases;" &>>$LOG_FILE_NAME
 if [ $? -ne 0 ]; then
     mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
     validate $? "setting the password"
