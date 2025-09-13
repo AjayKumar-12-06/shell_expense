@@ -61,7 +61,7 @@ validate $? "downloading the code"
 cd /app
 validate $? "change the app directory"
 
-unzip /tmp/backend.zip
+unzip /tmp/backend.zip &>>$LOG_FILE_NAME
 validate $? "unzip the code"
 
 npm install &>>$LOG_FILE_NAME
