@@ -80,8 +80,11 @@ validate $? "creating schema"
 systemctl daemon-reload &>>$LOG_FILE_NAME
 validate $? "daemon reload"
 
-systemctl enable backend &>>$LOG_FILE_NAME
+systemctl unmask backend.service &>>$LOG_FILE_NAME
 validate $? "enable backend"
 
-systemctl restart backend &>>$LOG_FILE_NAME
+systemctl enable backend.service &>>$LOG_FILE_NAME
+validate $? "enable backend"
+
+systemctl restart backend.service &>>$LOG_FILE_NAME
 validate $? "restarted backend"
