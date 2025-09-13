@@ -67,7 +67,7 @@ validate $? "unzip the code"
 npm install &>>$LOG_FILE_NAME
 validate $? "dependencies installing"
 
-cp /home/ec2-user/shell_expense/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
+cp /home/ec2-user/shell_expense/backend.service /etc/systemd/system/backend.service
 
 
 dnf install mysql -y &>>$LOG_FILE_NAME
@@ -80,8 +80,8 @@ validate $? "creating schema"
 systemctl daemon-reload &>>$LOG_FILE_NAME
 validate $? "daemon reload"
 
-systemctl restart backend.service &>>$LOG_FILE_NAME
-validate $? "restarted backend"
-
-systemctl enable backend.service &>>$LOG_FILE_NAME
+systemctl enable backend &>>$LOG_FILE_NAME
 validate $? "enable backend"
+
+systemctl restart backend &>>$LOG_FILE_NAME
+validate $? "restarted backend"
