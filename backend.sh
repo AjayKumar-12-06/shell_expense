@@ -73,7 +73,7 @@ validate $? "moving the data to server"
 dnf install mysql -y &>>$LOG_FILE_NAME
 validate $? "installing mysql"
 
-mysql -h 172.31.28.73 -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
+mysql -h 172.31.28.238 -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 validate $? "creating schema"
 
 systemctl daemon-reload &>>$LOG_FILE_NAME
