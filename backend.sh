@@ -76,6 +76,9 @@ validate $? "installing mysql"
 mysql -h 172.31.28.238 -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 validate $? "creating schema"
 
+systemctl unmask backend.service &>>$LOG_FILE_NAME
+validate $? "unmask backend"
+
 systemctl daemon-reload &>>$LOG_FILE_NAME
 validate $? "daemon reload"
 
