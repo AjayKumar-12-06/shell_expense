@@ -38,10 +38,10 @@ dnf module install mysql-server -y &>>$LOG_FILE_NAME
 validate $? "installing mysql-server"
 
 systemctl enable mysqld &>>$LOG_FILE_NAME
-validate $? "enable mysqld"
+validate $? "enable mysql"
 
 systemctl start mysqld &>>$LOG_FILE_NAME
-validate $? "start the mysqld"
+validate $? "start the mysql"
 
 mysql -h 172.31.28.238 -u root -pExpenseApp@1 -e show databases; &>>$LOG_FILE_NAME
 if [ $? -ne 0 ]; then
