@@ -34,31 +34,31 @@ validate() {
     fi
 }
 
-dnf install nginx -y
+dnf install nginx -y &>>$LOG_FILE_NAME
 validate $? "installing nginx"
 
-systemctl enable nginx 
+systemctl enable nginx &>>$LOG_FILE_NAME
 validate $? "enabling nginx"
 
-systemctl start nginx
+systemctl start nginx &>>$LOG_FILE_NAME
 validate $? "start the nginx"
 
-rm -r /usr/share/nginx/html/*
+rm -r /usr/share/nginx/html/* &>>$LOG_FILE_NAME
 validate $? "deleting the existing code"
 
 
-curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOG_FILE_NAME
 validate $? "dowlinding thw code"
 
-cd /usr/share/nginx/html
+cd /usr/share/nginx/html &>>$LOG_FILE_NAME
 validate $? "change the directory"
 
-unzip /tmp/frontend.zip
+unzip /tmp/frontend.zip &>>$LOG_FILE_NAME
 validate $? "unzip the code"
 
-cp /home/ec2-user/shell_expense/expense.conf /etc/nginx/default.d/expense.conf
+cp /home/ec2-user/shell_expense/expense.conf /etc/nginx/default.d/expense.conf &>>$LOG_FILE_NAME
 validate $? "copying the directory"
 
-systemctl restart nginx
+systemctl restart nginx &>>$LOG_FILE_NAME
 validate $? "reastarting the nginx"
 
