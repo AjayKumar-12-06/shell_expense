@@ -34,7 +34,7 @@ validate() {
     fi
 }
 
-dnf module install mysql-server -y &>>$LOG_FILE_NAME
+dnf install mysql-server -y &>>$LOG_FILE_NAME
 validate $? "installing mysql"
 
 systemctl enable mysqld &>>$LOG_FILE_NAME
