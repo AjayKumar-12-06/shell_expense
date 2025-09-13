@@ -68,7 +68,7 @@ npm install &>>$LOG_FILE_NAME
 validate $? "dependencies installing"
 
 cp /home/ec2-user/shell_expense/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
-validate $? "moving the data to server"
+
 
 dnf install mysql -y &>>$LOG_FILE_NAME
 validate $? "installing mysql"
@@ -76,8 +76,6 @@ validate $? "installing mysql"
 mysql -h 172.31.28.238 -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 validate $? "creating schema"
 
-systemctl unmask backend.service &>>$LOG_FILE_NAME
-validate $? "unmask backend"
 
 systemctl daemon-reload &>>$LOG_FILE_NAME
 validate $? "daemon reload"
